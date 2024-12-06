@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const CaptainSignup = () => {
 
-  const navigate=useNavigate()
+  const navigate = useNavigate()
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,7 +24,7 @@ const CaptainSignup = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     // Set user and vehicle data
-    const captainData={
+    const captainData = {
       fullname: {
         firstname: firstname,
         lastname: lastname,
@@ -35,32 +35,31 @@ const CaptainSignup = () => {
         color: vehicleColor,
         plate: vehiclePlate,
         capacity: vehicleCapacity,
-        vehicletype: vehicleType,
+        vehicleType: vehicleType,
       },
 
     }
-     
-
+    // console.log(captainData)
     const response = await axios.post(
       `${import.meta.env.VITE_BASE_URL}/captains/register`,
       captainData)
 
-     if(response.status===201){
-      const data=response.data
+    if (response.status === 201) {
+      const data = response.data
       setCaptain(data.captain)
-      localStorage.setItem('token',data.token)
+      localStorage.setItem('token', data.token)
       navigate('/captain-home')
-     }
+    }
 
     // Clear input fields
-    setEmail('');
-    setPassword('');
-    setFirstname('');
-    setLastname('');
-    setVehicleColor('');
-    setVehiclePlate('');
-    setVehicleCapacity('');
-    setVehicleType('');
+    // setEmail('');
+    // setPassword('');
+    // setFirstname('');
+    // setLastname('');
+    // setVehicleColor('');
+    // setVehiclePlate('');
+    // setVehicleCapacity('');
+    // setVehicleType('');
   };
 
   return (
@@ -160,9 +159,9 @@ const CaptainSignup = () => {
               className="bg-slate-200 rounded px-4 py-2 border w-full text-lg placeholder:text-base"
             >
               <option value="">Select Vehicle Type</option>
-              <option value="Auto">Auto</option>
-              <option value="Car">Car</option>
-              <option value="Bike">Bike</option>
+              <option value="auto">Auto</option>
+              <option value="car">Car</option>
+              <option value="bike">Bike</option>
             </select>
           </div>
 
