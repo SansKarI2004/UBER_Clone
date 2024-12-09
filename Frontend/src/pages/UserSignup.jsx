@@ -29,13 +29,13 @@ const UserSignup = () => {
         newUser
       );
 
-      
+
 
       if (response.status === 201) {
         const data = response.data;
-        console.log('Received Token:', data.token); 
+        console.log('Received Token:', data.token);
         setUser(data.user); // Set user data in context
-        localStorage.setItem('token',data.token)
+        localStorage.setItem('token', data.token)
         navigate('/landing'); // Corrected navigation path
       } else {
         console.error('Failed to register user:', response.status);
